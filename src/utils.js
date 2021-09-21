@@ -1,0 +1,1 @@
+export const isValid = (value) => value.length >= 10
