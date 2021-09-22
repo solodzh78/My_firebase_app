@@ -29,13 +29,26 @@ const submitFormHandler = async e => {
     submitBtn.disabled = false;
   }
 };
+const renderModalAfterAuth = content => {
+  if (typeof(content) === 'string') {
+    createModal("Ошибка", content);
+  } else {
+    createModal('Список вопросов', Question.listToHTML(content));
+  }
+};
 const authFormHandler = async e => {
   e.preventDefault();
 
   const email = e.target.querySelector("#email").value;
   const password = e.target.querySelector("#password").value;
+  const btn = e.target.querySelector("button");
+
+  btn.disabled = true;
   const token = await authWithEmailAndPassword(email, password);
-  Question.fetch(token);
+  const content = await Question.fetch(token);
+  renderModalAfterAuth(content);
+  btn.disabled = false;
+
 };
 const openModal = () => {
   createModal("Авторизация", getAuthForm());
