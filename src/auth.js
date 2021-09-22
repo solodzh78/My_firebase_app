@@ -1,3 +1,5 @@
+import { apiKey } from "./api_key";
+
 export const getAuthForm = () => `
   <form class="mui-form" id="auth-form">
   <div class="mui-textfield mui-textfield--float-label">
@@ -18,7 +20,7 @@ export const getAuthForm = () => `
 </form>`;
 
 export const authWithEmailAndPassword = async (email, password) => {
-  const apiKey = 'AIzaSyCYlowP0NApdkpdnuBmtpwwW17rXL-ry_U';
+
   const url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=';
   const response = await fetch(url.concat(apiKey), {
     method: "POST",

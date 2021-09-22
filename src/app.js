@@ -40,7 +40,7 @@ const authFormHandler = async e => {
 };
 const openModal = () => {
   createModal('Авторизация', getAuthForm());
-  document.getElementById('auth-form').addEventListener('submit', authFormHandler, {once: true});
+  document.getElementById('auth-form').addEventListener('submit', authFormHandler, { once: true });
 };
 
 modalBtn.addEventListener('click', openModal);

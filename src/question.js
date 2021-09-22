@@ -43,7 +43,7 @@ export class Question {
   }
   static async fetch(token) {
     const url = 'https://my-firebase-app-89155-default-rtdb.europe-west1.firebasedatabase.app/questions.json';
-    const response = await fetch(url.concat(token));
+    const response = await fetch(url.concat('?auth=').concat(token));
     const data = await response.json();
     console.log(data);
   }
